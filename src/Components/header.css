@@ -1,0 +1,26 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 30px 75px 0 75px;
+}
+
+.header-container__title {
+  margin: 0 5px 0 0;
+}
+
+.header-container__input {
+  border-radius: 6px;
+  margin: 0 0 0 5px;
+  width: 300px;
+  font-size: 20px;
+}
+
+.header-container__login-button {
+  margin: 0 5px 0 auto;
+}
+
+.header-container__register-button {
+  margin: 0 0 0 5px;
+}
