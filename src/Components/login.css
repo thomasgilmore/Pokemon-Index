@@ -5,10 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
-
-.login-container__header {
-
+  margin-top: 60px;
 }
 
 .login-container__header-close-button{
