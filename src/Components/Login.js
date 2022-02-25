@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css';
 import GoogleLogin from 'react-google-login';
 
-export default function Login() {
+export default function Login({ toggleViewLogin }) {
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -13,7 +13,7 @@ export default function Login() {
   return (
     <div className='login-container'>
       <div className='login-container__header'>
-        <button className='login-container__header-close-button'>X</button>
+        <button className='login-container__header-close-button' onClick={toggleViewLogin}>X</button>
         <h1 className='login-container__header-title'>Login</h1>
       </div>
       <form className='login-container__form'>
