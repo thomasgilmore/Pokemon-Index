@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
+import Home from "./Components/Home";
 import Login from "./Components/Login";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Header toggleViewLogin={toggleViewLogin} />} />
-        <Route path="login" element={<Login toggleViewLogin={toggleViewLogin} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </div>
   );
