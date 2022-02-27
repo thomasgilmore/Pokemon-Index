@@ -5,7 +5,7 @@ import './Header.css';
 export default function Header({ onSearchSubmit, handleInputChange }) {
   return (
     <nav className='header-container'>
-      <h1 className='header-container__title'>Favorite Movies</h1>
+      <h1 className='header-container__title'>Favorite Pokemon</h1>
       <form onSubmit={onSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
