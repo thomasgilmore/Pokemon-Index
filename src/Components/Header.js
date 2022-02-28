@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-export default function Header({ onSearchSubmit, handleInputChange }) {
+export default function Header({ handleSearchSubmit, handleInputChange }) {
   return (
     <nav className='header-container'>
       <h1 className='header-container__title'>Favorite Pokemon</h1>
-      <form onSubmit={onSearchSubmit}>
+      <form onSubmit={handleSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
       <Link className='header-container__login-link' to="login">
