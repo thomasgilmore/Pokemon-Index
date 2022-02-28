@@ -1,3 +1,10 @@
+.pokemon-card__button {
+  border: none;
+  background: none;
+  margin: 10px;
+  padding: 0;
+}
+
 .pokemon-card__img {
   width: 250px;
   margin: 10px;
