@@ -14,12 +14,13 @@ export default function Home() {
   const [nameToDisplay, setNameToDisplay] = useState('');
   const [detailsToDisplay, setDetailsToDisplay] = useState('');
   const [cardList, setCardList] = useState([]);
+  const [favoritePokemonCards, setFavoritePokemonCards] = useState([]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
   }
 
-  const onSearchSubmit = (event) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault();
     fetch(`${API_URL}/cards?q=name:${inputValue}`)
       .then(res => res.json())
@@ -41,12 +42,24 @@ export default function Home() {
     setDetailsToDisplay(filteredArray[0].attacks);
   }
 
+  const handlePokemonCardSave = (event) => {
+    event.preventDefault();
+    console.log(event);
+    let allPokemonCardsToSave = [];
+    let pokemonCardToFavorite = cardList.filter((card) => {
+      return card.id === event.target.name;
+    })
+    allPokemonCardsToSave = [...favoritePokemonCards, ...pokemonCardToFavorite];
+    console.log(allPokemonCardsToSave);
+    setFavoritePokemonCards(allPokemonCardsToSave);
+  }
+
   console.log(inputValue);
   console.log(cardList);
   console.log(nameToDisplay);
   return (
     <div>
-      <Header onSearchSubmit={onSearchSubmit} handleInputChange={handleInputChange} />
+      <Header handleSearchSubmit={handleSearchSubmit} handleInputChange={handleInputChange} />
       <div className='cardDetails'>
         <div className='card'>
           {cardList.length > 0 ? <PokemonCardToShow img={cardToDisplay || cardList[0].images.large} title={nameToDisplay || cardList[0].name} /> : null}
@@ -57,7 +70,7 @@ export default function Home() {
       </div>
       <div className='cardList'>
         {cardList.length > 0 ? cardList.map((card) => {
-          return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} />)
+          return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />)
         }) : null}
       </div>
     </div>
