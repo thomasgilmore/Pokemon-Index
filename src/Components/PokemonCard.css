@@ -1,8 +1,8 @@
 .pokemon-card__button {
-  padding: 7px 5px 0 5px;
+  padding: 2px 5px 0 5px;
   position: absolute;
-  margin: 20px 0 0 200px;
-  font-size: 35px;
+  margin: 20px 5px 5px 190px;
+  font-size: 20px;
 }
 
 .pokemon-card__img {
