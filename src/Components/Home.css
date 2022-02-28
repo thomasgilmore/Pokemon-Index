@@ -1,3 +1,11 @@
+.cardDetails {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
 .cardList {
   display: flex;
   flex-wrap: wrap;
