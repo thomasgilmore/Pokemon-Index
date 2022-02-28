@@ -1,8 +1,12 @@
 import React from 'react';
 import './PokemonCard.css';
+import { MdOutlineFavorite } from "react-icons/md";
 
-export default function PokemonCard({ img, name, cardId, handlePokemonCardChange }) {
+export default function PokemonCard({ img, name, cardId, handlePokemonCardChange, handlePokemonCardSave }) {
   return (
-    <button onClick={handlePokemonCardChange} className='pokemon-card__button'><img src={img} alt={name} name={cardId} className="pokemon-card__img" /></button>
+    <span className='pokemon-card-container'>
+      <button className='pokemon-card__button' name={cardId} onClick={handlePokemonCardSave}><MdOutlineFavorite /></button>
+      <img  className="pokemon-card__img" src={img} alt={name} name={cardId} onClick={handlePokemonCardChange} />
+    </span>
   )
 }
