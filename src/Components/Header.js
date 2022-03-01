@@ -9,7 +9,7 @@ export default function Header({ handleSearchSubmit, handleInputChange }) {
       <form onSubmit={handleSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
-      <Link to="save">Favorite Pokemon</Link>
+      <Link to="favoritepokemon" className='header-container__favorite-pokemon-link'>Favorite Pokemon</Link>
       <Link className='header-container__login-link' to="login">
         <button className='header-container__login-button'>Login</button>
       </Link>
