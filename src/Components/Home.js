@@ -45,6 +45,24 @@ export default function Home() {
     setDetailsToDisplay(filteredArray[0].attacks);
   }
 
+  const handleCheckIfSaved = (pokemonCard) => {
+    const checkSavedArray = favoritePokemonCards.filter((card) => {
+      if (card.id === pokemonCard[0].id) {
+        return  true;
+      } else {
+        return false;
+      }
+    })
+   return checkSavedArray
+  }
+
+  const handleRemovePokemonCard = (pokemonCard) => {
+    let arrayWithRemovedPokemon = favoritePokemonCards.filter((card) => {
+      return card.id !== pokemonCard[0].id;
+    })
+    return arrayWithRemovedPokemon;
+  }
+
   const handlePokemonCardSave = (event) => {
     event.preventDefault();
     console.log(event);
@@ -52,7 +70,11 @@ export default function Home() {
     let pokemonCardToFavorite = cardList.filter((card) => {
       return card.id === event.target.name;
     })
-    allPokemonCardsToSave = [...favoritePokemonCards, ...pokemonCardToFavorite];
+    if (handleCheckIfSaved(pokemonCardToFavorite).length > 0) {
+      allPokemonCardsToSave = handleRemovePokemonCard(pokemonCardToFavorite);
+    } else {
+      allPokemonCardsToSave = [...favoritePokemonCards, ...pokemonCardToFavorite];
+    }
     console.log(allPokemonCardsToSave);
     setFavoritePokemonCards(allPokemonCardsToSave);
   }
