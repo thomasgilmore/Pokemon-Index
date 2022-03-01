@@ -1,9 +1,12 @@
 import './Home.css';
 import React, { useState } from 'react';
-import Header from './Header';
-import PokemonCardToShow from './PokemonCardToShow';
-import PokemonCardDetails from './PokemonCardDetails';
-import PokemonCard from './PokemonCard';
+import { Routes, Route } from 'react-router-dom';
+// import Header from './Header';
+// import PokemonCardToShow from './PokemonCardToShow';
+// import PokemonCardDetails from './PokemonCardDetails';
+// import PokemonCard from './PokemonCard';
+import FavoritePokemon from './FavoritePokemon';
+import HomePage from './HomePage';
 
 export default function Home() {
 
@@ -59,20 +62,10 @@ export default function Home() {
   console.log(nameToDisplay);
   return (
     <div>
-      <Header handleSearchSubmit={handleSearchSubmit} handleInputChange={handleInputChange} />
-      <div className='cardDetails'>
-        <div className='card'>
-          {cardList.length > 0 ? <PokemonCardToShow img={cardToDisplay || cardList[0].images.large} title={nameToDisplay || cardList[0].name} /> : null}
-        </div>
-        <div className='detail'>
-          {cardList.length > 0 ? <PokemonCardDetails title={nameToDisplay || cardList[0].name} attacks={detailsToDisplay || cardList[0].attacks} /> : null}
-        </div>
-      </div>
-      <div className='cardList'>
-        {cardList.length > 0 ? cardList.map((card) => {
-          return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />)
-        }) : null}
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage handleInputChange={handleInputChange} handleSearchSubmit={handleSearchSubmit} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} cardToDisplay={cardToDisplay} detailsToDisplay={detailsToDisplay} cardList={cardList} nameToDisplay={nameToDisplay} />} />
+        <Route path="save" element={<FavoritePokemon favoritePokemonCards={favoritePokemonCards} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />} />
+      </Routes>
     </div>
   )
 }
