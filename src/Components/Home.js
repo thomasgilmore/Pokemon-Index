@@ -64,7 +64,7 @@ export default function Home() {
     <div>
       <Routes>
         <Route path="/" element={<HomePage handleInputChange={handleInputChange} handleSearchSubmit={handleSearchSubmit} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} cardToDisplay={cardToDisplay} detailsToDisplay={detailsToDisplay} cardList={cardList} nameToDisplay={nameToDisplay} />} />
-        <Route path="save" element={<FavoritePokemon favoritePokemonCards={favoritePokemonCards} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />} />
+        <Route path="favoritepokemon" element={<FavoritePokemon favoritePokemonCards={favoritePokemonCards} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />} />
       </Routes>
     </div>
   )
