@@ -8,18 +8,22 @@
 
 .header-container__title {
   margin: 0 5px 0 0;
+  color: #9B00FF;
+  font-size: 2em;
 }
 
 .header-container__input {
   border-radius: 6px;
+  border: 2px solid lightgrey;
   margin: 0 0 0 5px;
   width: 300px;
   font-size: 20px;
+  height: 30px;
 }
 
 .header-container__favorite-pokemon-link {
   margin: 0 0 0 25px;
-  color: #000;
+  color: #AF33FF;
   text-decoration: none;
 }
 
@@ -27,6 +31,17 @@
   margin: 0 5px 0 auto;
 }
 
+.header-container__login-button {
+  background-color: #9B00FF;
+  border: 2px solid #AF33FF;
+  color: #fff;
+  font-size: 20px;
+}
+
 .header-container__register-button {
   margin: 0 0 0 5px;
+  background-color: #9B00FF;
+  border: 2px solid #AF33FF;
+  color: #fff;
+  font-size: 20px;
 }
