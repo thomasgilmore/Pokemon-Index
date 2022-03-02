@@ -31,3 +31,10 @@
   align-content: center;
   gap: 10px;
 }
+
+.login-container__form-loging-button {
+  background-color: #9B00FF;
+  border: 2px solid #AF33FF;
+  color: #fff;
+  font-size: 20px;
+}
