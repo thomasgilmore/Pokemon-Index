@@ -1,14 +1,21 @@
 import React from 'react';
 import './FavoritePokemon.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
 
 export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave }) {
+
+  const navigate = useNavigate();
+
+  const handleGoToHome = () => {
+    navigate('/');
+  }
+
   return (
     <div className='favorite-pokemon-container'>
       <header className='favorite-pokemon-container__header'>
         <h1 className='favorite-pokemon__header-title'>Favorite Pokemon</h1>
-        <Link to='/' className='favorite-pokemon__header-home-link'>Home</Link>
+        <span onClick={handleGoToHome} className='favorite-pokemon__header-home-link'>Home</span>
       </header>
       <div className='cardList'>
           {/* {favoritePokemonCards.length > 0 ? favoritePokemonCards.map((card) => {
