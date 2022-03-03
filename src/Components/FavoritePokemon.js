@@ -11,9 +11,14 @@ export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCar
         <Link to='/' className='favorite-pokemon__header-home-link'>Home</Link>
       </header>
       <div className='cardList'>
-          {favoritePokemonCards.length > 0 ? favoritePokemonCards.map((card) => {
+          {/* {favoritePokemonCards.length > 0 ? favoritePokemonCards.map((card) => {
             return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />)
-          }) : null}
+          }) : null} */}
+          {favoritePokemonCards && (
+            favoritePokemonCards.map((card) => 
+            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />
+            )
+          )}
       </div>
     </div>
   )

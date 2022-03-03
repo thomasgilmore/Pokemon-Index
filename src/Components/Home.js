@@ -1,5 +1,5 @@
 import './Home.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import Header from './Header';
 // import PokemonCardToShow from './PokemonCardToShow';
@@ -18,6 +18,8 @@ export default function Home() {
   const [detailsToDisplay, setDetailsToDisplay] = useState('');
   const [cardList, setCardList] = useState([]);
   const [favoritePokemonCards, setFavoritePokemonCards] = useState([]);
+
+  
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
@@ -65,27 +67,60 @@ export default function Home() {
 
   const handlePokemonCardSave = (event) => {
     event.preventDefault();
-    console.log(event);
-    let allPokemonCardsToSave = [];
-    let pokemonCardToFavorite = cardList.filter((card) => {
-      return card.id === event.target.name;
-    })
-    if (handleCheckIfSaved(pokemonCardToFavorite).length > 0) {
-      allPokemonCardsToSave = handleRemovePokemonCard(pokemonCardToFavorite);
-    } else {
-      allPokemonCardsToSave = [...favoritePokemonCards, ...pokemonCardToFavorite];
+    const cardId = event.target.name;
+    const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
+    const cardToSave = cardList.find((card) => card.id === cardId)
+    if (!isSaved) {
+      let newFavoriteArr = favoritePokemonCards
+      newFavoriteArr.push(cardToSave)
+      setFavoritePokemonCards(newFavoriteArr)
+      // console.log('triggered')
     }
-    console.log(allPokemonCardsToSave);
-    setFavoritePokemonCards(allPokemonCardsToSave);
-  }
+    // console.log(isSaved)
 
-  console.log(inputValue);
-  console.log(cardList);
-  console.log(nameToDisplay);
+    // console.log(event);
+    // let allPokemonCardsToSave = [];
+    // let pokemonCardToFavorite = cardList.filter((card) => {
+    //   return card.id === event.target.name;
+    // })
+    // if (handleCheckIfSaved(pokemonCardToFavorite).length > 0) {
+    //   allPokemonCardsToSave = handleRemovePokemonCard(pokemonCardToFavorite);
+    // } else {
+    //   allPokemonCardsToSave = [...favoritePokemonCards, ...pokemonCardToFavorite];
+    // }
+    // console.log(allPokemonCardsToSave);
+    // setFavoritePokemonCards(allPokemonCardsToSave);
+  }
+  // const handlePokemonCardSaveNew = (event) => {
+    
+  // }
+  // Fetch on component did mount
+  useEffect(() => {
+    fetch(`${API_URL}/cards`)
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result.data);
+      setCardList(result.data);
+    })
+  }, []);
+
+  console.log(favoritePokemonCards)
+
+  // console.log(inputValue);
+  // console.log(cardList);
+  // console.log(nameToDisplay);
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage handleInputChange={handleInputChange} handleSearchSubmit={handleSearchSubmit} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} cardToDisplay={cardToDisplay} detailsToDisplay={detailsToDisplay} cardList={cardList} nameToDisplay={nameToDisplay} />} />
+        <Route 
+          path="/"
+          element={<HomePage handleInputChange={handleInputChange} handleSearchSubmit={handleSearchSubmit} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave}
+          cardToDisplay={cardToDisplay}
+          detailsToDisplay={detailsToDisplay}
+          cardList={cardList}
+          nameToDisplay={nameToDisplay}
+          />}
+        />
         <Route path="favoritepokemon" element={<FavoritePokemon favoritePokemonCards={favoritePokemonCards} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />} />
       </Routes>
     </div>
