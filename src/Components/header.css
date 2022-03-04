@@ -27,12 +27,15 @@
   text-decoration: none;
 }
 
+.header-container__login-link {
+  margin: 0 5px 0 auto;
+}
+
 .header-container__login-button {
   background-color: #9B00FF;
   border: 2px solid #AF33FF;
   color: #fff;
   font-size: 20px;
-  margin: 0 5px 0 auto;
 }
 
 .header-container__register-button {

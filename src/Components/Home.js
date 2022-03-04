@@ -65,13 +65,6 @@ export default function Home() {
     return arrayWithRemovedPokemon;
   }
 
-  const handlePokemonCardDelete = (event) => {
-    event.preventDefault();
-    const cardId = event.target.name;
-    let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
-    setFavoritePokemonCards(allTheOtherCards);
-  }
-
   const handlePokemonCardSave = (event) => {
     event.preventDefault();
     const cardId = event.target.name;
@@ -121,29 +114,14 @@ export default function Home() {
       <Routes>
         <Route 
           path="/"
-          element={
-            <HomePage 
-            handleInputChange={handleInputChange} 
-            handleSearchSubmit={handleSearchSubmit} 
-            handlePokemonCardChange={handlePokemonCardChange} 
-            handlePokemonCardSave={handlePokemonCardSave}
-            handlePokemonCardDelete={handlePokemonCardDelete}
-            cardToDisplay={cardToDisplay}
-            detailsToDisplay={detailsToDisplay}
-            cardList={cardList}
-            nameToDisplay={nameToDisplay}
+          element={<HomePage handleInputChange={handleInputChange} handleSearchSubmit={handleSearchSubmit} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave}
+          cardToDisplay={cardToDisplay}
+          detailsToDisplay={detailsToDisplay}
+          cardList={cardList}
+          nameToDisplay={nameToDisplay}
           />}
         />
-        <Route 
-          path="favoritepokemon" 
-          element={
-            <FavoritePokemon 
-            favoritePokemonCards={favoritePokemonCards} 
-            handlePokemonCardChange={handlePokemonCardChange} 
-            handlePokemonCardSave={handlePokemonCardSave} 
-            handlePokemonCardDelete={handlePokemonCardDelete}
-          />} 
-        />
+        <Route path="favoritepokemon" element={<FavoritePokemon favoritePokemonCards={favoritePokemonCards} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />} />
       </Routes>
     </div>
   )

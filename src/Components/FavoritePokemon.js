@@ -1,21 +1,14 @@
 import React from 'react';
 import './FavoritePokemon.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
 
-export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
-
-  const navigate = useNavigate();
-
-  const handleGoToHome = () => {
-    navigate('/');
-  }
-
+export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave }) {
   return (
     <div className='favorite-pokemon-container'>
       <header className='favorite-pokemon-container__header'>
         <h1 className='favorite-pokemon__header-title'>Favorite Pokemon</h1>
-        <span onClick={handleGoToHome} className='favorite-pokemon__header-home-link'>Home</span>
+        <Link to='/' className='favorite-pokemon__header-home-link'>Home</Link>
       </header>
       <div className='cardList'>
           {/* {favoritePokemonCards.length > 0 ? favoritePokemonCards.map((card) => {
@@ -23,7 +16,7 @@ export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCar
           }) : null} */}
           {favoritePokemonCards && (
             favoritePokemonCards.map((card) => 
-            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} handlePokemonCardDelete={handlePokemonCardDelete} hideDeleteButton={false} />
+            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />
             )
           )}
       </div>
