@@ -9,8 +9,15 @@ export default function Login() {
   
   const navigate = useNavigate(); 
 
+  const handleGoToUserDashboard = () => {
+    navigate('/userdashboard');
+  }
+
   const responseGoogle = response => {
     console.log(response);
+    if (response.Du) {
+      handleGoToUserDashboard();
+    }
   };
 
   const handleGoToHomePage = () => {
