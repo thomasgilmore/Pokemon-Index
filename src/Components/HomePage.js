@@ -4,7 +4,7 @@ import PokemonCardToShow from './PokemonCardToShow';
 import PokemonCardDetails from './PokemonCardDetails';
 import PokemonCard from './PokemonCard';
 
-export default function HomePage({ nameToDisplay, cardToDisplay, detailsToDisplay, cardList, handleInputChange, handleSearchSubmit, handlePokemonCardChange, handlePokemonCardSave }) {
+export default function HomePage({ nameToDisplay, cardToDisplay, detailsToDisplay, cardList, handleInputChange, handleSearchSubmit, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
   return (
     <div>
       <Header handleSearchSubmit={handleSearchSubmit} handleInputChange={handleInputChange} />
@@ -18,7 +18,7 @@ export default function HomePage({ nameToDisplay, cardToDisplay, detailsToDispla
       </div>
       <div className='cardList'>
         {cardList.length > 0 ? cardList.map((card) => {
-          return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} />)
+          return (<PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} handlePokemonCardDelete={handlePokemonCardDelete} hideDeleteButton={true} />)
         }) : null}
       </div>
     </div>
