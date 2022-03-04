@@ -1,11 +1,4 @@
-.pokemon-card__delete-button {
-  padding: 2px 5px 0 5px;
-  position: absolute;
-  margin: 20px 5px 5px 180px;
-  font-size: 20px;
-}
-
-.pokemon-card__save-button {
+.pokemon-card__button {
   padding: 2px 5px 0 5px;
   position: absolute;
   margin: 20px 5px 5px 190px;

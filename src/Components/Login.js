@@ -1,26 +1,22 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
 
 export default function Login() {
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  
-  const navigate = useNavigate(); 
 
   const responseGoogle = response => {
     console.log(response);
   };
 
-  const handleGoToHomePage = () => {
-    navigate('/');
-  }
-
   return (
     <div className='login-container'>
       <div className='login-container__header'>
-        <button onClick={handleGoToHomePage} className='login-container__header-close-button'>X</button>
+        <Link className='login-container__header-close-link' to="/">
+          <button className='login-container__header-close-button'>X</button>
+        </Link>
         <h1 className='login-container__header-title'>Login</h1>
       </div>
       <form className='login-container__form'>
