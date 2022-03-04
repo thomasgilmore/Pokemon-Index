@@ -7,6 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 // import PokemonCard from './PokemonCard';
 import FavoritePokemon from './FavoritePokemon';
 import HomePage from './HomePage';
+import Login from './Login';
+import UserDashboard from './UserDashboard';
 
 export default function Home() {
 
@@ -144,6 +146,8 @@ export default function Home() {
             handlePokemonCardDelete={handlePokemonCardDelete}
           />} 
         />
+        <Route path="login" element={<Login />} />
+        <Route path="userdashboard" element={<UserDashboard />} />
       </Routes>
     </div>
   )
