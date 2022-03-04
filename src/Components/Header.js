@@ -1,18 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import './Header.css';
 
 export default function Header({ handleSearchSubmit, handleInputChange }) {
+  const navigate = useNavigate();
+
+  const handleGoToLoginPage = () => {
+    navigate('login');
+  }
+
+  const handleGoToFavoritePokemonPage = () => {
+    navigate('favoritepokemon');
+  }
+
   return (
     <nav className='header-container'>
       <h1 className='header-container__title'>Favorite Pokemon</h1>
       <form onSubmit={handleSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
-      <Link to="favoritepokemon" className='header-container__favorite-pokemon-link'>Favorite Pokemon</Link>
-      <Link className='header-container__login-link' to="login">
-        <button className='header-container__login-button'>Login</button>
-      </Link>
+      <span onClick={handleGoToFavoritePokemonPage} className='header-container__favorite-pokemon-link'>Favorite Pokemon</span>
+      <button onClick={handleGoToLoginPage} className='header-container__login-button'>Login</button>
       <button className='header-container__register-button'>Register</button>
     </nav>
   )
