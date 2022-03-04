@@ -65,6 +65,13 @@ export default function Home() {
     return arrayWithRemovedPokemon;
   }
 
+  const handlePokemonCardDelete = (event) => {
+    event.preventDefault();
+    const cardId = event.target.name;
+    let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
+    setFavoritePokemonCards(allTheOtherCards);
+  }
+
   const handlePokemonCardSave = (event) => {
     event.preventDefault();
     const cardId = event.target.name;
@@ -120,6 +127,7 @@ export default function Home() {
             handleSearchSubmit={handleSearchSubmit} 
             handlePokemonCardChange={handlePokemonCardChange} 
             handlePokemonCardSave={handlePokemonCardSave}
+            handlePokemonCardDelete={handlePokemonCardDelete}
             cardToDisplay={cardToDisplay}
             detailsToDisplay={detailsToDisplay}
             cardList={cardList}
@@ -133,6 +141,7 @@ export default function Home() {
             favoritePokemonCards={favoritePokemonCards} 
             handlePokemonCardChange={handlePokemonCardChange} 
             handlePokemonCardSave={handlePokemonCardSave} 
+            handlePokemonCardDelete={handlePokemonCardDelete}
           />} 
         />
       </Routes>
