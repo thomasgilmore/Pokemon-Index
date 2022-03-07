@@ -20,6 +20,7 @@ export default function Home() {
   const [detailsToDisplay, setDetailsToDisplay] = useState('');
   const [cardList, setCardList] = useState([]);
   const [favoritePokemonCards, setFavoritePokemonCards] = useState([]);
+  const [googleUserData, setGoogleUserData] = useState([]);
 
   
 
@@ -146,8 +147,20 @@ export default function Home() {
             handlePokemonCardDelete={handlePokemonCardDelete}
           />} 
         />
-        <Route path="login" element={<Login />} />
-        <Route path="userdashboard" element={<UserDashboard />} />
+        <Route 
+          path="login" 
+          element={
+            <Login 
+            setGoogleUserData={setGoogleUserData} 
+          />} 
+        />
+        <Route 
+          path="userdashboard" 
+          element={
+            <UserDashboard 
+            googleUserData={googleUserData} 
+            />} 
+          />
       </Routes>
     </div>
   )
