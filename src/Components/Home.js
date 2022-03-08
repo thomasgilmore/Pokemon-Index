@@ -159,6 +159,10 @@ export default function Home() {
           element={
             <UserDashboard 
             googleUserData={googleUserData} 
+            favoritePokemonCards={favoritePokemonCards}
+            handlePokemonCardChange={handlePokemonCardChange} 
+            handlePokemonCardSave={handlePokemonCardSave}
+            handlePokemonCardDelete={handlePokemonCardDelete}
             />} 
           />
       </Routes>
