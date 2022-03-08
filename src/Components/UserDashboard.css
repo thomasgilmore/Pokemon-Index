@@ -1,4 +1,4 @@
-.favorite-pokemon-container__header {
+.user-dashboard__container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -6,15 +6,26 @@
   margin: 30px 75px 0 75px;
 }
 
-.favorite-pokemon__header-title {
+.user-dashboard__title {
   margin: 0 5px 0 0;
   color: #9B00FF;
   font-size: 2em;
 }
 
-.favorite-pokemon__header-home-link {
+.user-dashboard__home-link {
   margin: 0 0 0 25px;
   color: #AF33FF;
   text-decoration: none;
   cursor: pointer;
+}
+
+.user-dashboard__profile-img {
+  width: 75px;
+  border-radius: 50%;
+  margin: 0 5px 0 auto;
+}
+
+.user-dashboard__information {
+  display: flex;
+  flex-direction: column;
 }

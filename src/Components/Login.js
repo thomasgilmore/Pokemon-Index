@@ -3,14 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
 
-export default function Login() {
+export default function Login({ setGoogleUserData }) {
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   
   const navigate = useNavigate(); 
 
+  const handleGoToUserDashboard = () => {
+    navigate('/userdashboard');
+  }
+
   const responseGoogle = response => {
     console.log(response);
+    setGoogleUserData(response);
+    if (response.Du) {
+      handleGoToUserDashboard();
+    }
   };
 
   const handleGoToHomePage = () => {

@@ -7,6 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 // import PokemonCard from './PokemonCard';
 import FavoritePokemon from './FavoritePokemon';
 import HomePage from './HomePage';
+import Login from './Login';
+import UserDashboard from './UserDashboard';
 
 export default function Home() {
 
@@ -18,6 +20,7 @@ export default function Home() {
   const [detailsToDisplay, setDetailsToDisplay] = useState('');
   const [cardList, setCardList] = useState([]);
   const [favoritePokemonCards, setFavoritePokemonCards] = useState([]);
+  const [googleUserData, setGoogleUserData] = useState([]);
 
   
 
@@ -144,6 +147,24 @@ export default function Home() {
             handlePokemonCardDelete={handlePokemonCardDelete}
           />} 
         />
+        <Route 
+          path="login" 
+          element={
+            <Login 
+            setGoogleUserData={setGoogleUserData} 
+          />} 
+        />
+        <Route 
+          path="userdashboard" 
+          element={
+            <UserDashboard 
+            googleUserData={googleUserData} 
+            favoritePokemonCards={favoritePokemonCards}
+            handlePokemonCardChange={handlePokemonCardChange} 
+            handlePokemonCardSave={handlePokemonCardSave}
+            handlePokemonCardDelete={handlePokemonCardDelete}
+            />} 
+          />
       </Routes>
     </div>
   )
