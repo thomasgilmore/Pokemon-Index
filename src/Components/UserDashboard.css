@@ -12,6 +12,13 @@
   font-size: 2em;
 }
 
+.user-dashboard__home-link {
+  margin: 0 0 0 25px;
+  color: #AF33FF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .user-dashboard__profile-img {
   width: 75px;
   border-radius: 50%;
