@@ -15,10 +15,10 @@ export default function Login({ setGoogleUserData }) {
 
   const responseGoogle = response => {
     console.log(response);
+    setGoogleUserData(response);
     if (response.Du) {
       handleGoToUserDashboard();
     }
-    setGoogleUserData(response);
   };
 
   const handleGoToHomePage = () => {

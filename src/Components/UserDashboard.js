@@ -2,18 +2,9 @@ import React, { useEffect } from 'react';
 import './UserDashboard.css';
 
 export default function UserDashboard({ googleUserData }) {
-  let profileImg = 'loading...';
-  let userName
-  let userEmail
-
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(googleUserData.profileObj);
-      profileImg = googleUserData.profileObj.imageUrl;
-      userName = googleUserData.profileObj.name;
-      userEmail = googleUserData.profileObj.email;
-    }, 1500)
-  }, [])
+  let profileImg = googleUserData.profileObj.imageUrl;
+  let userName = googleUserData.profileObj.name;
+  let userEmail = googleUserData.profileObj.email;
 
   console.log(googleUserData);
   return (
