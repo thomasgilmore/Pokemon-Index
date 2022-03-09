@@ -4,11 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { PokemonContextProvider } from "./Context/Context";
 
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <PokemonContextProvider>
+        <App />
+      </PokemonContextProvider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

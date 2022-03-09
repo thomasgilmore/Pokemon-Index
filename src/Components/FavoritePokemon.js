@@ -2,14 +2,18 @@ import React from 'react';
 import './FavoritePokemon.css';
 import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
+import { usePokemonContextProvider } from '../Context/Context';
 
 export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
+  const { cardList } = usePokemonContextProvider();
 
   const navigate = useNavigate();
 
   const handleGoToHome = () => {
     navigate('/');
   }
+
+  console.log(cardList)
 
   return (
     <div className='favorite-pokemon-container'>

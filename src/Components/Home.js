@@ -33,18 +33,15 @@ export default function Home() {
     fetch(`${API_URL}/cards?q=name:${inputValue}`)
       .then(res => res.json())
       .then((result) => {
-        console.log(result.data);
         setCardList(result.data);
       })
   }
 
   const handlePokemonCardChange = (event) => {
     event.preventDefault();
-    console.log(event);
     let filteredArray = cardList.filter((card) => {
       return card.id === event.target.name;
     });
-    console.log(filteredArray);
     setcardToDisplay(filteredArray[0].images.large);
     setNameToDisplay(filteredArray[0].name);
     setDetailsToDisplay(filteredArray[0].attacks);
@@ -84,7 +81,6 @@ export default function Home() {
       let newFavoriteArr = favoritePokemonCards
       newFavoriteArr.push(cardToSave)
       setFavoritePokemonCards(newFavoriteArr)
-      // console.log('triggered')
     }
     // console.log(isSaved)
 
@@ -109,12 +105,9 @@ export default function Home() {
     fetch(`${API_URL}/cards`)
     .then(res => res.json())
     .then((result) => {
-      console.log(result.data);
       setCardList(result.data);
     })
   }, []);
-
-  console.log(favoritePokemonCards)
 
   // console.log(inputValue);
   // console.log(cardList);
