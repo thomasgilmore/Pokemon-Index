@@ -53,6 +53,7 @@ const PokemonContextProvider = ({ children }) => {
             let newFavoriteArr = favoritePokemonCards
             newFavoriteArr.push(cardToSave)
             setFavoritePokemonCards(newFavoriteArr)
+        }
     }
 
     // Fetch on component did mount
@@ -102,5 +103,3 @@ const usePokemonContextProvider = () => {
 }
 
 export { PokemonContextProvider, usePokemonContextProvider }
-
-// export { PokemonContext, PokemonContextProvider }

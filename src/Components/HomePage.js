@@ -3,8 +3,11 @@ import Header from './Header';
 import PokemonCardToShow from './PokemonCardToShow';
 import PokemonCardDetails from './PokemonCardDetails';
 import PokemonCard from './PokemonCard';
+import { usePokemonContextProvider } from '../Context/Context';
 
-export default function HomePage({ nameToDisplay, cardToDisplay, detailsToDisplay, cardList, handleInputChange, handleSearchSubmit, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
+export default function HomePage({ nameToDisplay, cardToDisplay, detailsToDisplay, handleInputChange, handleSearchSubmit, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
+  const { cardList } = usePokemonContextProvider()
+  console.log("home", cardList)
   return (
     <div>
       <Header handleSearchSubmit={handleSearchSubmit} handleInputChange={handleInputChange} />
