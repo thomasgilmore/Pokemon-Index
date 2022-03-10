@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Home.css';
 import Header from './Header';
 import PokemonCardToShow from './PokemonCardToShow';
 import PokemonCardDetails from './PokemonCardDetails';
 import PokemonCard from './PokemonCard';
-import { usePokemonContextProvider } from '../Context/Context';
+import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
 
 export default function Home() {
-  const { cardList, nameToDisplay, cardToDisplay, detailsToDisplay } = usePokemonContextProvider()
+  const { cardList, nameToDisplay, cardToDisplay, detailsToDisplay } = useContext(PokemonContext)
   console.log("home", cardList)
   return (
     <div>

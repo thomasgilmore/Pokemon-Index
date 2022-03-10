@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 import PokemonCard from './PokemonCard';
-import { usePokemonContextProvider } from '../Context/Context';
+import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
-  const { googleUserData, favoritePokemonCards } = usePokemonContextProvider()
+  const { googleUserData, favoritePokemonCards } = useContext(PokemonContext)
   let profileImg = googleUserData.profileObj.imageUrl;
   let userName = googleUserData.profileObj.name;
   let userEmail = googleUserData.profileObj.email;
