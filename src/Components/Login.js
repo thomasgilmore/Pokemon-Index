@@ -2,8 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
+import { usePokemonContextProvider } from '../Context/Context';
 
-export default function Login({ setGoogleUserData }) {
+export default function Login() {
+  const { setGoogleUserData } = usePokemonContextProvider()
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   

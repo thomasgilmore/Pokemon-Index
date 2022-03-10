@@ -1,8 +1,9 @@
 import React from 'react';
 import './PokemonCard.css';
-import { MdOutlineFavorite } from "react-icons/md";
+import { usePokemonContextProvider } from '../Context/Context';
 
-export default function PokemonCard({ img, name, cardId, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete, hideDeleteButton}) {
+export default function PokemonCard({ img, name, cardId, hideDeleteButton }) {
+  const { handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete } = usePokemonContextProvider()
   return (
     <span className='pokemon-card-container'>
     {hideDeleteButton ? 

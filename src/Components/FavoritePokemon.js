@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
 import { usePokemonContextProvider } from '../Context/Context';
 
-export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
-  const { cardList } = usePokemonContextProvider();
+export default function FavoritePokemon() {
+  const { cardList, favoritePokemonCards } = usePokemonContextProvider();
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function FavoritePokemon({ favoritePokemonCards, handlePokemonCar
           }) : null} */}
           {favoritePokemonCards && (
             favoritePokemonCards.map((card) => 
-            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} handlePokemonCardDelete={handlePokemonCardDelete} hideDeleteButton={false} />
+            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} hideDeleteButton={false} />
             )
           )}
       </div>

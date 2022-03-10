@@ -2,8 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 import PokemonCard from './PokemonCard';
+import { usePokemonContextProvider } from '../Context/Context';
 
-export default function UserDashboard({ googleUserData, favoritePokemonCards, handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete }) {
+export default function UserDashboard() {
+  const { googleUserData, favoritePokemonCards } = usePokemonContextProvider()
   let profileImg = googleUserData.profileObj.imageUrl;
   let userName = googleUserData.profileObj.name;
   let userEmail = googleUserData.profileObj.email;
@@ -29,7 +31,7 @@ export default function UserDashboard({ googleUserData, favoritePokemonCards, ha
       <div className='cardList'>
           {favoritePokemonCards && (
             favoritePokemonCards.map((card) => 
-            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} handlePokemonCardChange={handlePokemonCardChange} handlePokemonCardSave={handlePokemonCardSave} handlePokemonCardDelete={handlePokemonCardDelete} hideDeleteButton={false} />
+            <PokemonCard img={card.images.small} name={card.name} cardId={card.id} key={card.id} hideDeleteButton={false} />
             )
           )}
       </div>

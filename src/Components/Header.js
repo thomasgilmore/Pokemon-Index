@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
+import { usePokemonContextProvider } from '../Context/Context';
 
-export default function Header({ handleSearchSubmit, handleInputChange }) {
+export default function Header() {
+  const { handleSearchSubmit, handleInputChange } = usePokemonContextProvider()
   const navigate = useNavigate();
 
   const handleGoToLoginPage = () => {
