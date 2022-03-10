@@ -5,7 +5,8 @@ import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
-  const { googleUserData, favoritePokemonCards } = useContext(PokemonContext)
+  const { googleUserData } = useContext(PokemonContext)
+  let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
   let profileImg = googleUserData.profileObj.imageUrl;
   let userName = googleUserData.profileObj.name;
   let userEmail = googleUserData.profileObj.email;
