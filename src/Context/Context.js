@@ -40,19 +40,23 @@ const PokemonContextProvider = ({ children }) => {
     const handlePokemonCardDelete = (event) => {
         event.preventDefault();
         const cardId = event.target.name;
+        let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
         let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
+        localStorage.setItem("favorite_pokemon", JSON.stringify(allTheOtherCards))
         setFavoritePokemonCards(allTheOtherCards);
     }
 
     const handlePokemonCardSave = (event) => {
         event.preventDefault();
         const cardId = event.target.name;
+        let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
         const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
         const cardToSave = cardList.find((card) => card.id === cardId)
         if (!isSaved) {
             let newFavoriteArr = favoritePokemonCards
             newFavoriteArr.push(cardToSave)
-            setFavoritePokemonCards(newFavoriteArr)
+            localStorage.setItem("favorite_pokemon", JSON.stringify(newFavoriteArr))
+            setFavoritePokemonCards(newFavoriteArr);
         }
     }
 
@@ -76,7 +80,7 @@ const PokemonContextProvider = ({ children }) => {
         setNameToDisplay,
         detailsToDisplay,
         setDetailsToDisplay,
-        favoritePokemonCards,
+        favoritePokemonCards, 
         setFavoritePokemonCards,
         googleUserData,
         setGoogleUserData,
