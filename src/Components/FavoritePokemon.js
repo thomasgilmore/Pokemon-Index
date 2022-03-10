@@ -5,7 +5,9 @@ import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
 
 export default function FavoritePokemon() {
-  const { cardList, favoritePokemonCards } = useContext(PokemonContext)
+  const { cardList } = useContext(PokemonContext)
+
+  let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
 
   const navigate = useNavigate();
 
@@ -14,6 +16,7 @@ export default function FavoritePokemon() {
   }
 
   console.log(cardList)
+  console.log(favoritePokemonCards);
 
   return (
     <div className='favorite-pokemon-container'>
