@@ -94,12 +94,14 @@ const PokemonContextProvider = ({ children }) => {
 };
 
 // Using the context
-const usePokemonContextProvider = () => {
-    const context = useContext(PokemonContext)
-    if(context === undefined) {
-        console.log('PokemonContext must be used within the provider')
-    }
-    return context
-}
+// const usePokemonContextProvider = () => {
+//     const context = useContext(PokemonContext)
+//     if(context === undefined) {
+//         console.log('PokemonContext must be used within the provider')
+//     }
+//     return context
+// }
 
-export { PokemonContextProvider, usePokemonContextProvider }
+// export { PokemonContextProvider, usePokemonContextProvider }
+
+export { PokemonContextProvider, PokemonContext }
