@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
-import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context';
 
 export default function Login() {
   const { setGoogleUserData } = useContext(PokemonContext)

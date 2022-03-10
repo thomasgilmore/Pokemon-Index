@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './PokemonCard.css';
-import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context';
 
 export default function PokemonCard({ img, name, cardId, hideDeleteButton }) {
   const { handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete } = useContext(PokemonContext)

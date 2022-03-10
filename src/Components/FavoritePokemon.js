@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './FavoritePokemon.css';
 import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
-import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context';
 
 export default function FavoritePokemon() {
   const { cardList, favoritePokemonCards } = useContext(PokemonContext)

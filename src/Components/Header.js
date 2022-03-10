@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
-import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context';
 
 export default function Header() {
   const { handleSearchSubmit, handleInputChange } = useContext(PokemonContext)

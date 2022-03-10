@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 import PokemonCard from './PokemonCard';
-import { usePokemonContextProvider, PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
   const { googleUserData, favoritePokemonCards } = useContext(PokemonContext)
