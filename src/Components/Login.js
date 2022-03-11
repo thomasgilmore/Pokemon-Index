@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login';
 import { PokemonContext } from '../Context/Context';
 
 export default function Login() {
-  const { setGoogleUserData } = useContext(PokemonContext)
+  const { setGoogleUserData, setUserGoogleId, handleCheckUser, setUserToken } = useContext(PokemonContext)
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   
@@ -18,6 +18,11 @@ export default function Login() {
   const responseGoogle = response => {
     console.log(response);
     setGoogleUserData(response);
+    let userGoogleId = response.googleId;
+    setUserGoogleId(userGoogleId);
+    handleCheckUser(userGoogleId);
+    setUserToken(response.tokenId);
+    localStorage.setItem('user-token', JSON.stringify(response.tokenId));
     if (response.Du) {
       handleGoToUserDashboard();
     }
