@@ -12,6 +12,11 @@ const PokemonContextProvider = ({ children }) => {
     const [cardList, setCardList] = useState([]);
     const [favoritePokemonCards, setFavoritePokemonCards] = useState([]);
     const [googleUserData, setGoogleUserData] = useState([]);
+    const [userGoogleId, setUserGoogleId] = useState('');
+    const [userToken , setUserToken] = useState('');
+    const [userFavoritesPokemon, setUserFavoritesPokemon] = useState([]);
+
+    let token = localStorage.getItem('user-token');
 
     // Functions
     const handleInputChange = (event) => {
@@ -40,24 +45,56 @@ const PokemonContextProvider = ({ children }) => {
     const handlePokemonCardDelete = (event) => {
         event.preventDefault();
         const cardId = event.target.name;
-        let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+        if (token) {
+        let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
         let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
-        localStorage.setItem("favorite_pokemon", JSON.stringify(allTheOtherCards))
-        setFavoritePokemonCards(allTheOtherCards);
+        localStorage.setItem(userGoogleId, JSON.stringify(allTheOtherCards))
+        setUserFavoritesPokemon(allTheOtherCards);
+        } else {
+            let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+            let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
+            localStorage.setItem("favorite_pokemon", JSON.stringify(allTheOtherCards))
+            setFavoritePokemonCards(allTheOtherCards); 
+        }
     }
 
     const handlePokemonCardSave = (event) => {
         event.preventDefault();
         const cardId = event.target.name;
-        let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+        if (token) {
+        let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
         const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
         const cardToSave = cardList.find((card) => card.id === cardId)
         if (!isSaved) {
             let newFavoriteArr = favoritePokemonCards
             newFavoriteArr.push(cardToSave)
-            localStorage.setItem("favorite_pokemon", JSON.stringify(newFavoriteArr))
-            setFavoritePokemonCards(newFavoriteArr);
+            localStorage.setItem(userGoogleId, JSON.stringify(newFavoriteArr))
+            setUserFavoritesPokemon(newFavoriteArr);
         }
+        } else {
+            let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+            const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
+            const cardToSave = cardList.find((card) => card.id === cardId)
+            if (!isSaved) {
+                let newFavoriteArr = favoritePokemonCards
+                newFavoriteArr.push(cardToSave)
+                localStorage.setItem("favorite_pokemon", JSON.stringify(newFavoriteArr))
+                setFavoritePokemonCards(newFavoriteArr);
+            }
+        } 
+    }
+
+    const handleCheckUser = (googleId) => {
+        let userFavorites = JSON.parse(localStorage.getItem(googleId))
+        if (!userFavorites) {
+            let userFavoritesPokemon = [];
+            localStorage.setItem(googleId, JSON.stringify(userFavoritesPokemon))
+        }
+    }
+
+    const handleSignOut = () => {
+        localStorage.removeItem('user-token');
+        setUserToken('');
     }
 
     // Fetch on component did mount
@@ -89,6 +126,15 @@ const PokemonContextProvider = ({ children }) => {
         handlePokemonCardChange,
         handlePokemonCardDelete,
         handlePokemonCardSave,
+        userGoogleId,
+        setUserGoogleId,
+        handleCheckUser,
+        handleSignOut,
+        userToken, 
+        setUserToken,
+        token,
+        userFavoritesPokemon,
+        setUserFavoritesPokemon,
     }
     return(
         <PokemonContext.Provider value={value}>
