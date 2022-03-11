@@ -5,8 +5,8 @@ import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
-  const { googleUserData } = useContext(PokemonContext)
-  let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+  const { googleUserData, userGoogleId } = useContext(PokemonContext)
+  let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
   let profileImg = googleUserData.profileObj.imageUrl;
   let userName = googleUserData.profileObj.name;
   let userEmail = googleUserData.profileObj.email;
@@ -18,6 +18,7 @@ export default function UserDashboard() {
   }
 
   console.log(googleUserData);
+  console.log(userGoogleId);
   return (
     <div>
       <nav className='user-dashboard__container'>

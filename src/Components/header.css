@@ -28,6 +28,13 @@
   cursor: pointer;
 }
 
+.header-container__user-dashboard-link {
+  margin: 0 0 0 25px;
+  color: #AF33FF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .header-container__login-button {
   background-color: #9B00FF;
   border: 2px solid #AF33FF;
@@ -38,6 +45,14 @@
 
 .header-container__register-button {
   margin: 0 0 0 5px;
+  background-color: #9B00FF;
+  border: 2px solid #AF33FF;
+  color: #fff;
+  font-size: 20px;
+}
+
+.header-container__sign-out-button {
+  margin: 0 0 0 auto;
   background-color: #9B00FF;
   border: 2px solid #AF33FF;
   color: #fff;
