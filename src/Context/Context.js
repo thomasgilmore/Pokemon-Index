@@ -60,6 +60,7 @@ const PokemonContextProvider = ({ children }) => {
 
     const handlePokemonCardSave = (event) => {
         event.preventDefault();
+        event.target.style = 'background: yellow';
         const cardId = event.target.name;
         if (token) {
         let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
