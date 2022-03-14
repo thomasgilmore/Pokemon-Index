@@ -5,7 +5,8 @@ import { PokemonContext } from '../Context/Context';
 
 export default function Header() {
   const { handleSearchSubmit, handleInputChange, handleSignOut } = useContext(PokemonContext)
-  let token = localStorage.getItem('user-token');
+  let secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
+  let isSignedIn = secondAppStore.isSignedIn;
   const navigate = useNavigate();
 
   const handleGoToLoginPage = () => {
@@ -26,7 +27,7 @@ export default function Header() {
       <form onSubmit={handleSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
-      {token ? 
+      {isSignedIn ? 
         <React.Fragment>
         <span onClick={handleGoToUserDashboard} className='header-container__user-dashboard-link'>User Dashboard</span> 
         <button onClick={handleSignOut} className='header-container__sign-out-button'>Sign Out</button>
