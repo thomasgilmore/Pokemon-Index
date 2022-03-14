@@ -20,7 +20,6 @@ export default function Login() {
     setGoogleUserData(response);
     let userGoogleId = response.googleId;
     setUserGoogleId(userGoogleId);
-    handleCheckUser(userGoogleId);
     setUserToken(response.tokenId);
     let currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
     console.log(currentLocalStorage);
