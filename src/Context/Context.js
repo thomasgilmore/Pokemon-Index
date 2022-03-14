@@ -1,6 +1,13 @@
 import { useContext, createContext, useState, useEffect } from "react"
 import { API_URL } from "../Constants/Constants";
 
+// INIT LOCAL STORAGE
+const AppState = {
+    isSignedIn: false,
+    favoriteCards: [],
+}
+
+
 const PokemonContext = createContext();
 
 const PokemonContextProvider = ({ children }) => {
