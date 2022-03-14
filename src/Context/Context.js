@@ -58,9 +58,10 @@ const PokemonContextProvider = ({ children }) => {
         localStorage.setItem(userGoogleId, JSON.stringify(allTheOtherCards))
         setUserFavoritesPokemon(allTheOtherCards);
         } else {
-            let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
-            let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
-            localStorage.setItem("favorite_pokemon", JSON.stringify(allTheOtherCards))
+            let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+            let allTheOtherCards = secondAppStore.favoriteCards.filter((card) => card.id !== cardId)
+            secondAppStore.favoriteCards = allTheOtherCards;
+            localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
             setFavoritePokemonCards(allTheOtherCards); 
         }
     }
@@ -80,14 +81,17 @@ const PokemonContextProvider = ({ children }) => {
             setUserFavoritesPokemon(newFavoriteArr);
         }
         } else {
-            let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
-            const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
+            let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+            // let favoritePokemonCards = secondAppStore.favoriteCards;
+            console.log(secondAppStore.favoriteCards);
+            const isSaved = secondAppStore.favoriteCards.some((card) => card.id === cardId)
+            console.log(isSaved);
             const cardToSave = cardList.find((card) => card.id === cardId)
             if (!isSaved) {
-                let newFavoriteArr = favoritePokemonCards
-                newFavoriteArr.push(cardToSave)
-                localStorage.setItem("favorite_pokemon", JSON.stringify(newFavoriteArr))
-                setFavoritePokemonCards(newFavoriteArr);
+                // let newFavoriteArr = secondAppStore.favoriteCards
+                secondAppStore.favoriteCards.push(cardToSave)
+                localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
+                setFavoritePokemonCards(secondAppStore);
             }
         } 
     }
@@ -112,6 +116,7 @@ const PokemonContextProvider = ({ children }) => {
         .then((result) => {
         setCardList(result.data);
         })
+        localStorage.setItem("second-app-store", JSON.stringify(AppState));
     }, []);
 
     const value = {

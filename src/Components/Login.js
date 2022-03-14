@@ -22,7 +22,11 @@ export default function Login() {
     setUserGoogleId(userGoogleId);
     handleCheckUser(userGoogleId);
     setUserToken(response.tokenId);
-    localStorage.setItem('user-token', JSON.stringify(response.tokenId));
+    let currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
+    console.log(currentLocalStorage);
+    currentLocalStorage.token = response.tokenId;
+    console.log(currentLocalStorage);
+    localStorage.setItem('second-app-store', JSON.stringify(currentLocalStorage));
     if (response.Du) {
       handleGoToUserDashboard();
     }

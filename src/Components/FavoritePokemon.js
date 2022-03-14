@@ -7,7 +7,8 @@ import { PokemonContext } from '../Context/Context';
 export default function FavoritePokemon() {
   const { cardList } = useContext(PokemonContext)
 
-  let favoritePokemonCards = JSON.parse(localStorage.getItem("favorite_pokemon"))
+  let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+  let favoritePokemonCards = secondAppStore.favoriteCards;
 
   const navigate = useNavigate();
 
