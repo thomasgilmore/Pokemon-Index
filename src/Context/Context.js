@@ -55,10 +55,12 @@ const PokemonContextProvider = ({ children }) => {
         event.preventDefault();
         const cardId = event.target.name;
         if (isSignedIn) {
-        let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
-        let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
-        localStorage.setItem(userGoogleId, JSON.stringify(allTheOtherCards))
-        setUserFavoritesPokemon(allTheOtherCards);
+        let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+        let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+        let allTheOtherCards = userObject[0].favoritePokemon.filter((card) => card.id !== cardId)
+        userObject[0].favoritePokemon = allTheOtherCards;
+        localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
+        setUserFavoritesPokemon(secondAppStore);
         } else {
             let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
             let allTheOtherCards = secondAppStore.favoriteCards.filter((card) => card.id !== cardId)
