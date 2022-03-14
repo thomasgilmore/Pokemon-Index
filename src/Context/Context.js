@@ -5,6 +5,7 @@ import { API_URL } from "../Constants/Constants";
 const AppState = {
     isSignedIn: false,
     favoriteCards: [],
+    userInfo: [],
 }
 
 
@@ -23,7 +24,8 @@ const PokemonContextProvider = ({ children }) => {
     const [userToken , setUserToken] = useState('');
     const [userFavoritesPokemon, setUserFavoritesPokemon] = useState([]);
 
-    let token = localStorage.getItem('user-token');
+    let secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
+    let isSignedIn = secondAppStore.isSignedIn;
 
     // Functions
     const handleInputChange = (event) => {
@@ -52,11 +54,13 @@ const PokemonContextProvider = ({ children }) => {
     const handlePokemonCardDelete = (event) => {
         event.preventDefault();
         const cardId = event.target.name;
-        if (token) {
-        let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
-        let allTheOtherCards = favoritePokemonCards.filter((card) => card.id !== cardId)
-        localStorage.setItem(userGoogleId, JSON.stringify(allTheOtherCards))
-        setUserFavoritesPokemon(allTheOtherCards);
+        if (isSignedIn) {
+        let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+        let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+        let allTheOtherCards = userObject[0].favoritePokemon.filter((card) => card.id !== cardId)
+        userObject[0].favoritePokemon = allTheOtherCards;
+        localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
+        setUserFavoritesPokemon(secondAppStore);
         } else {
             let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
             let allTheOtherCards = secondAppStore.favoriteCards.filter((card) => card.id !== cardId)
@@ -70,15 +74,15 @@ const PokemonContextProvider = ({ children }) => {
         event.preventDefault();
         event.target.style = 'background: yellow';
         const cardId = event.target.name;
-        if (token) {
-        let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
-        const isSaved = favoritePokemonCards.some((card) => card.id === cardId)
+        if (isSignedIn) {
+        let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+        let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+        const isSaved = userObject[0].favoritePokemon.some((card) => card.id === cardId)
         const cardToSave = cardList.find((card) => card.id === cardId)
         if (!isSaved) {
-            let newFavoriteArr = favoritePokemonCards
-            newFavoriteArr.push(cardToSave)
-            localStorage.setItem(userGoogleId, JSON.stringify(newFavoriteArr))
-            setUserFavoritesPokemon(newFavoriteArr);
+            userObject[0].favoritePokemon.push(cardToSave)
+            localStorage.setItem('second-app-store', JSON.stringify(secondAppStore));
+            setUserFavoritesPokemon(secondAppStore);
         }
         } else {
             let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
@@ -105,8 +109,11 @@ const PokemonContextProvider = ({ children }) => {
     }
 
     const handleSignOut = () => {
-        localStorage.removeItem('user-token');
+        let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"));
+        secondAppStore.isSignedIn = false;
+        localStorage.setItem("second-app-store", JSON.stringify(secondAppStore));
         setUserToken('');
+        setUserGoogleId('');
     }
 
     // Fetch on component did mount
@@ -145,7 +152,6 @@ const PokemonContextProvider = ({ children }) => {
         handleSignOut,
         userToken, 
         setUserToken,
-        token,
         userFavoritesPokemon,
         setUserFavoritesPokemon,
     }

@@ -6,10 +6,14 @@ import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
   const { googleUserData, userGoogleId } = useContext(PokemonContext)
-  let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
+  // let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
   let profileImg = googleUserData.profileObj.imageUrl;
   let userName = googleUserData.profileObj.name;
   let userEmail = googleUserData.profileObj.email;
+
+  let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+  let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+  let favoritePokemonCards = userObject[0].favoritePokemon;
 
   const navigate = useNavigate();
 
@@ -17,8 +21,7 @@ export default function UserDashboard() {
     navigate('/');
   }
 
-  console.log(googleUserData);
-  console.log(userGoogleId);
+  console.log(userObject);
   return (
     <div>
       <nav className='user-dashboard__container'>
