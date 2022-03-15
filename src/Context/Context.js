@@ -122,7 +122,9 @@ const PokemonContextProvider = ({ children }) => {
         .then((result) => {
         setCardList(result.data);
         })
-        localStorage.setItem("second-app-store", JSON.stringify(AppState));
+        if (localStorage.length < 1) {
+            localStorage.setItem("second-app-store", JSON.stringify(AppState));
+        }
     }, []);
 
     const value = {
