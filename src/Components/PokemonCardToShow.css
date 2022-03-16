@@ -2,3 +2,9 @@
   width: 300px;
   margin: 10px;
 }
+
+@media only screen and (max-width: 800px) {
+  .pokemon-card-to-show__img {
+    width: 200px;
+  }
+}
