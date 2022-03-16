@@ -14,7 +14,7 @@ const PokemonContext = createContext();
 const PokemonContextProvider = ({ children }) => {
     // State
     const [inputValue, setInputValue] = useState('');
-    const [cardToDisplay, setcardToDisplay] = useState('');
+    const [cardToDisplay, setCardToDisplay] = useState('');
     const [nameToDisplay, setNameToDisplay] = useState('');
     const [detailsToDisplay, setDetailsToDisplay] = useState('');
     const [cardList, setCardList] = useState([]);
@@ -44,7 +44,7 @@ const PokemonContextProvider = ({ children }) => {
         let filteredArray = cardList.filter((card) => {
           return card.id === event.target.name;
         });
-        setcardToDisplay(filteredArray[0].images.large);
+        setCardToDisplay(filteredArray[0].images.large);
         setNameToDisplay(filteredArray[0].name);
         setDetailsToDisplay(filteredArray[0].attacks);
       }
@@ -133,7 +133,7 @@ const PokemonContextProvider = ({ children }) => {
         inputValue,
         setInputValue,
         cardToDisplay,
-        setcardToDisplay,
+        setCardToDisplay,
         nameToDisplay,
         setNameToDisplay,
         detailsToDisplay,
