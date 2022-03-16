@@ -13,3 +13,9 @@
   justify-content: center;
   margin: 20px 10px;
 }
+
+@media only screen and (max-width: 800px) {
+  .cardDetails {
+    flex-direction: column;
+  }
+}
