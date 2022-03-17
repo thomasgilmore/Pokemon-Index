@@ -68,6 +68,7 @@
 @media only screen and (max-width: 800px) {
   .header-container {
     flex-direction: column;
+    gap: 5px;
   }
 
   .header-container__login-button {
