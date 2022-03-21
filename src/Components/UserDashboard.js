@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
-import PokemonCard from './PokemonCard';
+import PokemonCard from './PokemonCard.tsx';
 import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
