@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './FavoritePokemon.css';
 import { useNavigate } from 'react-router-dom';
-import PokemonCard from './PokemonCard.tsx';
+import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
 
 export default function FavoritePokemon() {
