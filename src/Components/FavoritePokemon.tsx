@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 import './FavoritePokemon.css';
 import { useNavigate } from 'react-router-dom';
-import PokemonCard from './PokemonCard.tsx';
+import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
+import { useContext } from 'react';
 
 export default function FavoritePokemon() {
   const { cardList } = useContext(PokemonContext)
 
-  let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
-  let favoritePokemonCards = secondAppStore.favoriteCards;
+  const secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+  const favoritePokemonCards = secondAppStore.favoriteCards;
 
   const navigate = useNavigate();
 

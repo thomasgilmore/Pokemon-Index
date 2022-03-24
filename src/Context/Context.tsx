@@ -1,4 +1,5 @@
-import { useContext, createContext, useState, useEffect } from "react"
+import * as React from "react"
+import { useContext, createContext, useState, useEffect } from 'react';
 import { API_URL } from "../Constants/Constants";
 
 // INIT LOCAL STORAGE
@@ -11,7 +12,11 @@ const AppState = {
 
 const PokemonContext = createContext();
 
-const PokemonContextProvider = ({ children }) => {
+interface IPokemonContextProviderProps {
+    children: any;
+}
+
+const PokemonContextProvider = ({ children }: IPokemonContextProviderProps) => {
     // State
     const [inputValue, setInputValue] = useState('');
     const [cardToDisplay, setCardToDisplay] = useState('');
@@ -41,7 +46,7 @@ const PokemonContextProvider = ({ children }) => {
 
     const handlePokemonCardChange = (event) => {
         event.preventDefault();
-        let filteredArray = cardList.filter((card) => {
+        const filteredArray = cardList.filter((card) => {
           return card.id === event.target.name;
         });
         setCardToDisplay(filteredArray[0].images.large);
@@ -51,17 +56,17 @@ const PokemonContextProvider = ({ children }) => {
 
     const handlePokemonCardDelete = (event) => {
         event.preventDefault();
-        let secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
-        let isSignedIn = secondAppStore.isSignedIn;
+        const secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
+        const isSignedIn = secondAppStore.isSignedIn;
         const cardId = event.target.name;
         if (isSignedIn) {
-        let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
-        let allTheOtherCards = userObject[0].favoritePokemon.filter((card) => card.id !== cardId)
+        const userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+        const allTheOtherCards = userObject[0].favoritePokemon.filter((card) => card.id !== cardId)
         userObject[0].favoritePokemon = allTheOtherCards;
         localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
         setUserFavoritesPokemon(secondAppStore);
         } else {
-            let allTheOtherCards = secondAppStore.favoriteCards.filter((card) => card.id !== cardId)
+            const allTheOtherCards = secondAppStore.favoriteCards.filter((card) => card.id !== cardId)
             secondAppStore.favoriteCards = allTheOtherCards;
             localStorage.setItem("second-app-store", JSON.stringify(secondAppStore))
             setFavoritePokemonCards(allTheOtherCards); 
@@ -70,12 +75,12 @@ const PokemonContextProvider = ({ children }) => {
 
     const handlePokemonCardSave = (event) => {
         event.preventDefault();
-        let secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
-        let isSignedIn = secondAppStore.isSignedIn;
+        const secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
+        const isSignedIn = secondAppStore.isSignedIn;
         event.target.style = 'background: yellow';
         const cardId = event.target.name;
         if (isSignedIn) {
-        let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+        const userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
         const isSaved = userObject[0].favoritePokemon.some((card) => card.id === cardId)
         const cardToSave = cardList.find((card) => card.id === cardId)
         if (!isSaved) {
@@ -99,15 +104,15 @@ const PokemonContextProvider = ({ children }) => {
     }
 
     const handleCheckUser = (googleId) => {
-        let userFavorites = JSON.parse(localStorage.getItem(googleId))
+        const userFavorites = JSON.parse(localStorage.getItem(googleId))
         if (!userFavorites) {
-            let userFavoritesPokemon = [];
+            const userFavoritesPokemon = [];
             localStorage.setItem(googleId, JSON.stringify(userFavoritesPokemon))
         }
     }
 
     const handleSignOut = () => {
-        let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"));
+        const secondAppStore = JSON.parse(localStorage.getItem("second-app-store"));
         secondAppStore.isSignedIn = false;
         localStorage.setItem("second-app-store", JSON.stringify(secondAppStore));
         setIsSignedInState(false);

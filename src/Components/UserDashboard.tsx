@@ -1,19 +1,20 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
-import PokemonCard from './PokemonCard.tsx';
+import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
 
 export default function UserDashboard() {
   const { googleUserData, userGoogleId } = useContext(PokemonContext)
   // let favoritePokemonCards = JSON.parse(localStorage.getItem(userGoogleId))
-  let profileImg = googleUserData.profileObj.imageUrl;
-  let userName = googleUserData.profileObj.name;
-  let userEmail = googleUserData.profileObj.email;
+  const profileImg = googleUserData.profileObj.imageUrl;
+  const userName = googleUserData.profileObj.name;
+  const userEmail = googleUserData.profileObj.email;
 
-  let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
-  let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
-  let favoritePokemonCards = userObject[0].favoritePokemon;
+  const secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+  const userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
+  const favoritePokemonCards = userObject[0].favoritePokemon;
 
   const navigate = useNavigate();
 

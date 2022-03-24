@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 import './Home.css';
 import Header from './Header';
 import PokemonCardToShow from './PokemonCardToShow';
 import PokemonCardDetails from './PokemonCardDetails';
-import PokemonCard from './PokemonCard.tsx';
+import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../Context/Context';
+import { useContext } from 'react';
 
 export default function Home() {
   const { cardList, nameToDisplay, cardToDisplay, detailsToDisplay } = useContext(PokemonContext)

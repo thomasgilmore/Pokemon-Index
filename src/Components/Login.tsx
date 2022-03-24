@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
@@ -18,14 +19,14 @@ export default function Login() {
   const responseGoogle = response => {
     console.log(response);
     setGoogleUserData(response);
-    let userGoogleId = response.googleId;
+    const userGoogleId = response.googleId;
     setUserGoogleId(userGoogleId);
     handleCheckUser(userGoogleId);
     setUserToken(response.tokenId);
-    let currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
+    const currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
     console.log(currentLocalStorage);
     currentLocalStorage.isSignedIn = true;
-    let currentUser = {
+    const currentUser = {
       googleId: response.googleId,
       favoritePokemon: []
     }
