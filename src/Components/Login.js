@@ -25,9 +25,13 @@ export default function Login() {
     let currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
     console.log(currentLocalStorage);
     currentLocalStorage.isSignedIn = true;
+    currentLocalStorage.currentUserGoogleId = response.googleId;
     let currentUser = {
       googleId: response.googleId,
-      favoritePokemon: []
+      favoritePokemon: [],
+      userProfileImg: response.profileObj.imageUrl,
+      userName: response.profileObj.name,
+      userEmail: response.profileObj.email,
     }
     const isUser = currentLocalStorage.userInfo.some((user) => user.googleId === currentUser.googleId)
     if (!isUser) {
