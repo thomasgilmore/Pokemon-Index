@@ -6,6 +6,7 @@ const AppState = {
     isSignedIn: false,
     favoriteCards: [],
     userInfo: [],
+    currentUserGoogleId: '',
 }
 
 
@@ -54,6 +55,7 @@ const PokemonContextProvider = ({ children }) => {
         let secondAppStore = JSON.parse(localStorage.getItem('second-app-store'));
         let isSignedIn = secondAppStore.isSignedIn;
         const cardId = event.target.name;
+        let userGoogleId = secondAppStore.currentUserGoogleId;
         if (isSignedIn) {
         let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
         let allTheOtherCards = userObject[0].favoritePokemon.filter((card) => card.id !== cardId)
@@ -74,6 +76,7 @@ const PokemonContextProvider = ({ children }) => {
         let isSignedIn = secondAppStore.isSignedIn;
         event.target.style = 'background: yellow';
         const cardId = event.target.name;
+        let userGoogleId = secondAppStore.currentUserGoogleId;
         if (isSignedIn) {
         let userObject = secondAppStore.userInfo.filter((user) => user.googleId === userGoogleId);
         const isSaved = userObject[0].favoritePokemon.some((card) => card.id === cardId)
