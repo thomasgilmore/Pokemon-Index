@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import GoogleLogin from 'react-google-login';
-import { PokemonContext } from '../Context/Context';
+import { PokemonContext } from '../Context/Context.tsx';
 
 export default function Login() {
   const { setGoogleUserData, setUserGoogleId, handleCheckUser, setUserToken, setIsSignedInState } = useContext(PokemonContext)
 
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
 
   const handleGoToUserDashboard = () => {
     navigate('/userdashboard');
@@ -18,15 +18,15 @@ export default function Login() {
   const responseGoogle = response => {
     console.log(response);
     setGoogleUserData(response);
-    let userGoogleId = response.googleId;
+    const userGoogleId = response.googleId;
     setUserGoogleId(userGoogleId);
     handleCheckUser(userGoogleId);
     setUserToken(response.tokenId);
-    let currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
+    const currentLocalStorage = JSON.parse(localStorage.getItem('second-app-store'));
     console.log(currentLocalStorage);
     currentLocalStorage.isSignedIn = true;
     currentLocalStorage.currentUserGoogleId = response.googleId;
-    let currentUser = {
+    const currentUser = {
       googleId: response.googleId,
       favoritePokemon: [],
       userProfileImg: response.profileObj.imageUrl,
