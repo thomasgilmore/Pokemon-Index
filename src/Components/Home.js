@@ -3,7 +3,7 @@ import './Home.css';
 import Header from './Header';
 import PokemonCardToShow from './PokemonCardToShow';
 import PokemonCardDetails from './PokemonCardDetails';
-import PokemonCard from './PokemonCard';
+import PokemonCard from './PokemonCard.tsx';
 import { PokemonContext } from '../Context/Context';
 
 export default function Home() {

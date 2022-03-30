@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import './PokemonCard.css';
 import { PokemonContext } from '../Context/Context';
 
-// interface IPokemonCardProps {
-//   img: string;
-//   name: string;
-//   cardId: string;
-//   hideDeleteButton: boolean;
-// }
+interface IPokemonCardProps {
+  img: string;
+  name: string;
+  cardId: string;
+  hideDeleteButton: boolean;
+}
 
 // export default function PokemonCard({ img, name, cardId, hideDeleteButton }: IPokemonCardProps) {
-export default function PokemonCard({ img, name, cardId, hideDeleteButton }) {
+export default function PokemonCard({ img, name, cardId, hideDeleteButton }: IPokemonCardProps) {
   const { handlePokemonCardChange, handlePokemonCardSave, handlePokemonCardDelete } = useContext(PokemonContext)
   return (
     <span className='pokemon-card-container'>
