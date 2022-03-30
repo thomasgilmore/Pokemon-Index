@@ -11,14 +11,14 @@ export default function UserDashboard() {
   // let userName = googleUserData.profileObj.name;
   // let userEmail = googleUserData.profileObj.email;
 
-  let secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
-  let currentUserGoogleId = secondAppStore.currentUserGoogleId;
-  let userObject = secondAppStore.userInfo.filter((user) => user.googleId === currentUserGoogleId);
+  const secondAppStore = JSON.parse(localStorage.getItem("second-app-store"))
+  const currentUserGoogleId = secondAppStore.currentUserGoogleId;
+  const userObject = secondAppStore.userInfo.filter((user) => user.googleId === currentUserGoogleId);
   console.log(userObject);
-  let favoritePokemonCards = userObject[0].favoritePokemon;
-  let profileImg = userObject[0].userProfileImg;
-  let userName = userObject[0].userName;
-  let userEmail = userObject[0].userEmail;
+  const favoritePokemonCards = userObject[0].favoritePokemon;
+  const profileImg = userObject[0].userProfileImg;
+  const userName = userObject[0].userName;
+  const userEmail = userObject[0].userEmail;
 
   const navigate = useNavigate();
 
