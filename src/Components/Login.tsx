@@ -39,7 +39,7 @@ export default function Login() {
     }
     localStorage.setItem('second-app-store', JSON.stringify(currentLocalStorage));
     setIsSignedInState(true);
-    if (response.Du) {
+    if (response.accessToken) {
       handleGoToUserDashboard();
     }
   };
