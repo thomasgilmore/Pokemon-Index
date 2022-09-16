@@ -32,7 +32,7 @@ export default function Header() {
         </React.Fragment>
         :
         <React.Fragment>
-          <span onClick={handleGoToFavoritePokemonPage} className='header-container__favorite-pokemon-link'>Favorite Pokemon</span>
+          <span onClick={handleGoToFavoritePokemonPage} className='header-container__favorite-pokemon-link'>Favorite Pokémon</span>
           <button onClick={handleGoToLoginPage} className='header-container__login-button'>Login</button>
           <button className='header-container__register-button'>Register</button>
         </React.Fragment>
