@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <nav className='header-container'>
-      <h1 className='header-container__title'>Favorite Pokemon</h1>
+      <h1 className='header-container__title'>Favorite Pokémon</h1>
       <form onSubmit={handleSearchSubmit}>
         <input type="text" onChange={handleInputChange} className='header-container__input' />
       </form>
